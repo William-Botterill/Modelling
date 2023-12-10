@@ -5,8 +5,10 @@ public class MainCode{
         Machine machine2 = new Machine(2, 50, machine3);
         Machine machine1 = new Machine(1, 50, machine2);
         machine1.addInventory(275);
-        //machine1.addInventory(75);
-        machine1.runIfInventoryAvailable();
+        machine1.runInLoop();
+        machine2.runInLoop();
+        machine3.runInLoop();
+        end.runInLoop();
     
     }
 }

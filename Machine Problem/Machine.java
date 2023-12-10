@@ -9,6 +9,7 @@ public class Machine {
     private int processVariance;
     private boolean free;
     private Machine NextMachine;
+    private int outputProducts = 0;
 
     // Constructor
     public Machine(int machineId, int capacity, Machine Next) {
@@ -74,9 +75,15 @@ public class Machine {
     }
 
     // Stop the machine
-    public void stop() {
+    public void stopMachine(int load) {
         System.out.println("Machine " + machineId + " stopped.");
-        //runIfInventoryAvailable();
+        if (machineId != 4) {
+            NextMachine.addInventory(load);
+        }
+        else {
+            outputProducts += load;
+            System.out.println("Total number of products made: " + outputProducts);
+        }
     }
 
     public int getRandomProcessVariance() {
@@ -96,7 +103,7 @@ public class Machine {
         free = true;
         System.out.println("Full Process Time: " + fullProcessTime);
         System.out.println("Processed materials totalling: " + materials);
-        stop();
+        stopMachine(materials);
     }
 
     public void loadMaterials(int materials, int machineId) {
@@ -151,6 +158,6 @@ public class Machine {
     }
 
     public static void main(String[] args) {
-        
+
     }
 }
